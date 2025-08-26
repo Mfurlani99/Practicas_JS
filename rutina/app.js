@@ -15,11 +15,18 @@ function crearTareas() {
     const estado = false
     const id = contador
 
-    const nuevatarea = { id, tarea, hora, estado }
+    
 
+    if (horas(hora)) {
+        alert("horario no disponible")
+    } else {
+        
+        console.log(typeof horario)
+    const nuevatarea = { id, tarea, hora, estado }
     Tareas.push(nuevatarea)
-    console.log("Tareas")
-    console.log(Tareas)
+    }
+    
+    
     limpiar()
 }
 
@@ -37,10 +44,10 @@ function render() {
 
 
         check.addEventListener('change', e => {
-    const idSeleccionado = e.target.dataset.id;
-    cambiarEstado(parseInt(idSeleccionado))
+            const idSeleccionado = e.target.dataset.id;
+            cambiarEstado(parseInt(idSeleccionado))
             render();
-});
+        });
 
 
 
@@ -66,7 +73,7 @@ function render() {
             const horaR = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
             li.textContent = `EL id es: ${t.id} - de la tarea: ${t.tarea} — horario: ${horaR}`;
-            
+
             listaC.append(li);
 
 
@@ -81,21 +88,30 @@ function limpiar() {
     document.getElementById("hora").value = "";
 }
 
+function horas(hora) {
+     const objeto = Tareas.find(item => item.hora == hora);
+    if(objeto != null){
+return true
+    }else{
+        return false
+    }
+}
+
 
 function cambiarEstado(id) {
-const objeto = Tareas.find(item => item.id == id);
-const indice = Tareas.findIndex(item => item.id == id);
+    const objeto = Tareas.find(item => item.id == id);
+    const indice = Tareas.findIndex(item => item.id == id);
     console.log(objeto)
-         //console.log("esto tiene el indice: " + indice)
-        TareasCompletas.push(objeto) 
+    //console.log("esto tiene el indice: " + indice)
+    TareasCompletas.push(objeto)
 
 
-        //console.log("tareas completas")
-        
-        //console.log(TareasCompletas) 
+    //console.log("tareas completas")
 
-        Tareas.splice(indice, 1)
-     console.log("Tareas eliminadas")
+    //console.log(TareasCompletas) 
+
+    Tareas.splice(indice, 1)
+    console.log("Tareas eliminadas")
     console.log(Tareas)
 
     render(); // volvemos a renderisar

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Reset básico */
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+        }
+
+        #Ctareas, #completas {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        #Ctareas h2, #completas h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Cada tarea en párrafo */
+        #Ctareas p, 
+        #completas p {
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 5px solid #007bff;
+            transition: transform 0.2s;
+            font-size: 16px;
+            color: #333;
+        }
+
+        #Ctareas p:hover,
+        #completas p:hover {
+            transform: translateX(5px);
+        }
+
+        /* Estado completado */
+        #completas p {
+            text-decoration: line-through;
+            color: #777;
+            border-left-color: #28a745;
+            background: #eef9f0;
+        }
+        .btn-agregar {
+    background: #007bff;       /* Azul principal */
+    color: white;              /* Texto blanco */
+    border: none;              /* Sin borde */
+    padding: 10px 18px;        /* Espaciado interno */
+    border-radius: 8px;        /* Bordes redondeados */
+    font-size: 16px;           /* Tamaño de fuente */
+    font-weight: bold;         /* Negrita */
+    cursor: pointer;           /* Manito al pasar */
+    transition: background 0.3s, transform 0.2s;
+    margin-left: 10px;         /* Separación del input */
+}
+
+.btn-agregar:hover {
+    background: #0056b3;       /* Azul más oscuro al pasar */
+    transform: scale(1.05);    /* Efecto de “agrandar” */
+}
+
+.btn-agregar:active {
+    background: #003d80;       /* Azul aún más oscuro al hacer clic */
+    transform: scale(0.98);    /* Pequeño efecto de “presionar” */
+}
+    </style>
+</head>
+<body>
+    <form>
+        <input type="text" placeholder="Tarea" id="Tarea">
+        <button type="submit" class="btn-agregar">agregar</button>
+    </form>
+    <div id="Ctareas">
+        
+    </div>
+    <div id="completas">
+
+    </div>
+    <script src="app.js" ></script>
+</body>
+</html>
